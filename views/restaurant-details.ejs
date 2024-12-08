@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Details</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Restaurant Details</h1>
+
+  <% if (restaurant) { %>
+    <h2><%= restaurant.name %></h2>
+    <p><strong>Borough:</strong> <%= restaurant.borough %></p>
+    <p><strong>Cuisine:</strong> <%= restaurant.cuisine %></p>
+    <p><strong>Address:</strong> <%= restaurant.address.street %>, <%= restaurant.address.zipcode %></p>
+    <br>
+    <h3>Grades</h3>
+    <p class="grades">
+      <% restaurant.grades.forEach(grade => { %>
+        <p><strong>Grade:</strong> <%= grade.grade %>, <strong>Score:</strong> <%= grade.score %>, <strong>Date:</strong> <%= grade.date.toDateString() %></p>
+      <% }) %>
+      </p>
+    <br>
+    <p><strong>Restaurant ID:</strong> <%= restaurant.restaurant_id %></p>
+  <% } else { %>
+    <p>Restaurant not found.</p>
+  <% } %>
+
+  <br>
+  <a href="/restaurants/search">Back to Restaurant List</a>
+</body>
+</html>
